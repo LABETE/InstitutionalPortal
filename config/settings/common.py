@@ -38,13 +38,15 @@ THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
     'allauth',  # registration
     'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
+    #'allauth.socialaccount',  # registration
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'InstitutionalPortal.users',  # custom users app
     # Your stuff: custom apps go here
+    'debts',
+    'careers',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -99,7 +101,7 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db("DATABASE_URL", default="postgres:///InstitutionalPortal"),
+    'default': env.db("DATABASE_URL", default="postgres://labete:death666@localhost/InstitutionalPortal"),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
