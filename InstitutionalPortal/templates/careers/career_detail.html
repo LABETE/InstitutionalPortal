@@ -1,0 +1,23 @@
+{% extends "careers/base.html" %}
+{% load static %}
+
+{% block head_title %}Careers-Detail Career{% endblock head_title %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">
+				<h2><a href="{% url 'careers:list' %}">Careers</a> / {{ object.name }}</h2>
+			</div>
+			<div class="panel-body">
+				<p><strong>Code:</strong> 
+				<br/> {{ object.code }}</p>
+			</div>		
+		</div>
+		<a href="{% url 'careers:update' object.code %}"><button type="button" class="btn btn-primary">Edit</button></a>
+	</div>
+</div>
+{% endblock content %}
+

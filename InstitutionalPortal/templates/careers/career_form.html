@@ -1,0 +1,38 @@
+{% extends "careers/base.html" %}
+{% load crispy_forms_tags %}
+{% if object %}
+	{% block head_title %}Careers-Modify Career{% endblock head_title %}
+{% else %}
+	{% block head_title_new %}Careers-New Career{% endblock head_title_new %}
+{% endif %}
+
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			{% if object %}
+				<h1>{% block updateheader %}<a href="{% url 'careers:list' %}">Careers</a> / Modify Career{% endblock updateheader %}</h1>
+				<form action="{% url 'careers:update' object.code %}" method="POST" class="horizontal-form" role="form">
+			{% else %}
+				<h1>{% block createheader %}<a href="{% url 'careers:list' %}">Careers</a> / Modify Career{% endblock createheader %}</h1>
+				<form action="{% url 'careers:create' %}" method="POST" class="horizontal-form" role="form">
+			{% endif %}
+					{% csrf_token %}
+					{{ form|crispy }}
+					<div class="control-group">
+						<div class="controls">
+						{% if object %}
+							<button type="submit" class="btn btn-primary">Modify</button>
+						{% else %}
+							<button type="submit" class="btn btn-primary">Add</button>
+						{% endif %}
+						</div>
+					</div>
+				</form>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

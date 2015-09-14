@@ -1,0 +1,42 @@
+{% extends "careers/base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Careers" %}{% endblock head_title %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>Careers</h2>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<a href="{% url 'careers:create' %}">
+				<button type="button" class="btn btn-primary">
+				{% trans "Add a Career" %}</button>
+			</a>
+			{% if career_list %}
+				<ul class="list-group">
+				{% for career in career_list %}
+					<li class="list-group-item col-xs-7 col-sm-9">
+						<a href="{% url 'careers:detail' career.code %}">
+			    			<h4 class="list-group-item-heading col-xs-11">{{ career.name }}</h4>
+			    		</a>
+						<a href="{% url 'careers:update' career.code %}"><button type="button" class="btn btn-primary">Edit</button></a>
+				    </li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p>You have no careers</p>
+				<br/>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock content %}
